@@ -134,6 +134,9 @@ class GnuCPPCompiler(GnuCompiler, CPPCompiler):
     def get_pch_use_args(self, pch_dir, header):
         return ['-fpch-preprocess', '-include', os.path.basename(header)]
 
+    def language_stdlib_only_link_flags(self):
+        return ['-lstdc++']
+
 
 class ElbrusCPPCompiler(GnuCPPCompiler, ElbrusCompiler):
     def __init__(self, exelist, version, gcc_type, is_cross, exe_wrapper=None, defines=None, **kwargs):
